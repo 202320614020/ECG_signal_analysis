@@ -4,60 +4,61 @@ This project demonstrates how to classify ECG (electrocardiogram) signals using 
 📦 Dataset
 The dataset used in this project is downloaded via KaggleHub and includes:
 
-mitbih_train.csv
-
-mitbih_test.csv
+-mitbih_train.csv
+-mitbih_test.csv
 
 Each row in the dataset represents a heartbeat signal (187 data points) followed by a label (class).
 
 ⚙️ Workflow
-Download and Load Dataset
+1) Download and Load Dataset
 Uses kagglehub to download and load ECG signals into pandas DataFrames.
 
-Data Visualization
+2) Data Visualization
 Plots a sample ECG signal and detects R-peaks using scipy.signal.find_peaks.
 
-Feature Extraction
+3) Feature Extraction
 For each signal, 4 key features are extracted:
 
-Root Mean Square (RMS)
+-Root Mean Square (RMS)
+-Mean
+-Standard Deviation
+-Number of R-peaks
 
-Mean
+4)Preprocessing
 
-Standard Deviation
+-The feature matrix is scaled using StandardScaler.
+-Labels are binarized for multi-class ROC analysis.
 
-Number of R-peaks
-
-Preprocessing
-
-The feature matrix is scaled using StandardScaler.
-
-Labels are binarized for multi-class ROC analysis.
-
-Model Training and Evaluation
+5)Model Training and Evaluation
 Trains and evaluates the following models:
 
-Logistic Regression
-
-Support Vector Machine (SVM)
-
-Decision Tree
-
-Random Forest
-
-Multi-Layer Perceptron (MLP)
+-Logistic Regression
+-Support Vector Machine (SVM)
+-Decision Tree
+-Random Forest
+-Multi-Layer Perceptron (MLP)
 
 For each model:
-
-Accuracy and classification report are printed.
-
-Confusion matrix is visualized with seaborn heatmaps.
-
-ROC curves are plotted for each class (if supported by the model).
+-Accuracy and classification report are printed.
+-Confusion matrix is visualized with seaborn heatmaps.
+-ROC curves are plotted for each class (if supported by the model).
 
 📊 Output
-Confusion matrices for all models
+-Confusion matrices for all models
+-ROC curves per class
+-Performance comparison across five classifiers
 
-ROC curves per class
+🛠️ Requirements
+pip install pandas numpy matplotlib seaborn scikit-learn scipy kagglehub
 
-Performance comparison across five classifiers
+📁 Project Structure
+.
+├── ecg_classifier.py       # Main script
+└── README.md               # Project explanation
+
+🚀 Future Work
+Use deep learning models (e.g., CNNs) for raw signal classification
+
+Explore time-series specific features (e.g., wavelet transforms)
+
+Real-time classification in a medical application
